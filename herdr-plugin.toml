@@ -1,0 +1,14 @@
+id = "alevsk.agent-profiles"
+name = "Agent Profiles & Subscriptions"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Injects active subscription and account profiles into the Herdr sidebar for all agents"
+platforms = ["linux", "macos", "windows"]
+
+[[startup]]
+command = ["bash", "hook.sh"]
+
+[[events]]
+id = "agent-detected"
+on = "pane.agent_detected"
+command = ["bash", "hook.sh"]
