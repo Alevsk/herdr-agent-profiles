@@ -145,6 +145,6 @@ while IFS=$'\t' read -r pane_id agent_type; do
     
     if [[ -n "$PROFILE_LABEL" ]]; then
         # Inject metadata
-        "$HERDR" pane report-metadata "$pane_id" --source "agent-profiles" --token "provider=$PROFILE_LABEL" 2>/dev/null || true
+        "$HERDR" pane report-metadata "$pane_id" --source "agent-profiles" --display-agent "$PROFILE_LABEL" 2>/dev/null || true
     fi
 done < <(jq -r '(.result.agents // [])[] | [.pane_id, .agent] | @tsv' <<< "$AGENTS_JSON" 2>/dev/null || true)
